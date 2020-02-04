@@ -9,8 +9,8 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
-    @song.notes.build(content: [])
-  end
+    @song.notes.build(content: '') # it builds the has_many notes or instantiates a new object.
+  end # the argument is the content, and the mass assignment for content will be set to an empty string.
 
   def create
 
@@ -50,6 +50,6 @@ class SongsController < ApplicationController
 
   def song_params
     params.require(:song).permit(:title, :artist_name, :genre_id, notes_attributes: [:content])
-  end
+  end # notes_attributes is the param which has a value of :content. 
 end
 
